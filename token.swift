@@ -7,10 +7,10 @@ struct Token {
         self.balance = balance
     }
 
-    func transfer(to recipient: String, amount: Double) -> Bool {
+    func transfer(to recipient: String, amount: Double, tokenRegistry: inout [String: Double]) -> Bool {
         if balance >= amount {
             balance -= amount
-            // Transfer the tokens to the recipient (add code for this)
+            tokenRegistry[recipient, default: 0] += amount
             return true
         } else {
             return false
